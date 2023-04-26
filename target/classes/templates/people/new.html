@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+
+<header>
+    <a href="/people">People</a><br/>
+    <a href="/books">Books</a><br/><hr>
+</header>
+
+<form th:method="POST" th:action="@{/people}" th:object="${person}">
+    <label for="full_name">Enter Full Name: </label>
+    <input type="text" th:field="*{fullName}" id="full_name">
+    <div style="color : red" th:if="${#fields.hasErrors()}" th:errors="*{fullName}">Error</div><br/>
+    <label for="year">Enter Year: </label>
+    <input type="text" th:field="*{year}" id="year">
+    <div style="color : red" th:if="${#fields.hasErrors()}" th:errors="*{year}">Error</div><br/>
+    <input type="submit" value="Create">
+</form>
+
+</body>
+</html>

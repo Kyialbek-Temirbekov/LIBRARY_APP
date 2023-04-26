@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/books/search}">
+    <label for="title">Enter a search term</label>
+    <input type="text" id="title" name="title"><br/>
+    <input type="submit" value="Search">
+</form><br/>
+
+<div th:if="${books}">
+    <p th:if="${books.isEmpty()}">No books found</p>
+    <div th:each="book: ${books}">
+        <p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">Value</p>
+        <p th:if="${book.getPerson() == null}" th:text="${'This book is free'}">Value</p>
+        <p th:if="${book.getPerson() != null}" th:text="${'Book taken by ' + book.getPerson().getFullName()}">Value</p><br/>
+    </div>
+</div>
+
+</body>
+</html>
